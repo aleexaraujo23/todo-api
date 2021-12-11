@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/todos")
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("*")
 public class TodoController {
 
     @Autowired
@@ -23,7 +23,7 @@ public class TodoController {
         return repository.save(todo);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public Todo getById( @PathVariable Long id ){
         return repository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
